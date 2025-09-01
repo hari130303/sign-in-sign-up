@@ -1,0 +1,16 @@
+
+services:
+
+  task-container:
+    container_name: task-container
+    image: task-image
+    ports:
+      - "8088:8088"
+    restart: always
+    environment:
+      DBUSER: '${DBUSER}'
+      DBPASS: '${DBPASS}'
+      DBNAME: '${DBNAME}'
+      DBHOST: '${DBHOST}'
+      DBPORT: '${DBPORT}'
+      JWTSECRETKET: '${JWTSECRETKET}'
