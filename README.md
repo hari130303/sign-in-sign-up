@@ -16,7 +16,7 @@ A simple user authentication system featuring **signup** and **login** APIs, bui
 
 ##  Setup & Run Instructions
 
-### 1. Clone the Repo
+1. Clone the Repo
 
 ```bash
 git clone https://github.com/hari130303/sign-in-sign-up.git
