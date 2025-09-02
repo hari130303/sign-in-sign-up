@@ -9,14 +9,15 @@ import (
 )
 
 func main() {
+	var err error
 
-	// err := godotenv.Load()
+	// err = godotenv.Load()
 	// if err != nil {
 	// 	log.Fatal("Error loading .env file")
 	// }
 
 	//call config function to create postgres db connection
-	err := database.Config()
+	err = database.Config()
 	if err != nil {
 		fmt.Println("Error during connect with postgres database : ", err)
 		return

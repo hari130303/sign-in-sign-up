@@ -3,7 +3,7 @@ services:
 
   task-container:
     container_name: task-container
-    image: task-image
+    image: go-auth-app
     ports:
       - "8088:8088"
     restart: always
