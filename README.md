@@ -1,26 +1,29 @@
-User Authentication System (Golang + Docker + PostgreSQL)
+# User Authentication System (Golang + Docker + PostgreSQL)
 
-A simple user authentication system featuring signup and login APIs, built with Golang, PostgreSQL, and containerized using Docker.
-Ideal for home assignments or as a starter template.
+A simple user authentication system featuring **signup** and **login** APIs, built with **Golang**, **PostgreSQL**, containerized using **Docker**. Ideal for home assignments or as a starter template.
 
-🛠 Technical Overview
+---
 
-Language & Framework: Golang using net/http from the standard library.
+## 🛠 Technical Overview
 
-Database: PostgreSQL, storing user data securely with SQL.
+- **Language & Framework**: Golang using `net/http` from the standard library. Offers performance, simplicity, and ease of deployment.
+- **Database**: PostgreSQL, storing user data securely with SQL.
+- **Authentication**: Passwords hashed via `bcrypt`; JWT tokens used for secure session management.
+- **Containerization**: Docker ensures consistent development environments and easy deployment.
+- **Configuration**: Managed through environment variables.
 
-Authentication: Passwords hashed via bcrypt; JWT tokens used for secure session management.
+---
 
-Containerization: Docker ensures consistent development environments and easy deployment.
+##  Setup & Run Instructions
 
-Configuration: Managed through environment variables.
+### 1. Clone the Repo
 
-⚙️ Setup & Run Instructions
-1️⃣ Clone the Repo
+```bash
 git clone https://github.com/hari130303/sign-in-sign-up.git
 cd sign-in-sign-up
 
-2️⃣ Database Setup (Local PostgreSQL)
+
+2. Database Setup (Local PostgreSQL)
 
 Before starting the application, create the database and table in PostgreSQL:
 
@@ -37,7 +40,7 @@ CREATE TABLE public.user_master (
     PRIMARY KEY (user_id)
 );
 
-3️⃣ Environment Variables
+3. Environment Variables
 
 Create a .env file in the project root:
 
@@ -45,35 +48,33 @@ DBUSER=postgres
 DBPASS=12345
 DBNAME=task_db
 DBHOST=host.docker.internal
--- DBHOST=localhost   # Use this if running locally without Docker
+# DBHOST=localhost   # Use this if running locally without Docker
 DBPORT=5432
-JWTSECRETKEY=secretkey1234567
+JWTSECRETKET=secretkey1234567
 
-4️⃣ Run Locally (Optional)
+
+4. Run Locally (Optional)
 go mod tidy
 go run main.go
 
 
-Note: If you want to run locally, uncomment the following code block in main.go to load environment variables from .env:
+NOTE : Uncommand the below code in main.go file to load env when running locally
 
 err = godotenv.Load()
 if err != nil {
-    log.Fatal("Error loading .env file")
+log.Fatal("Error loading .env file")
 }
 
-
 The server will be running at:
-👉 http://localhost:8088
+👉 http://localhost:8080
 
-5️⃣ Run with Docker
+5. Run with Docker
 Build the Docker Image
 docker build -t go-auth-app .
 
-Run with Docker Compose
+Run the Container as per in docker compose file
 docker compose up -d
 
-
-In docker-compose.yml, the app is mapped to port 8088 on the host, which forwards to 8088 inside the container.
 
 🔑 API Endpoints
 1️⃣ Signup
@@ -82,17 +83,18 @@ POST http://localhost:8088/user/register
 
 Request
 {
-  "username": "testuser1",
-  "password": "12345",
-  "mail_id": "hari@gmail.com"
+        "username":"testuser1",
+        "password":"12345",
+        "mail_id":"hari@gmail.com"
 }
+
 
 Response
 {
-  "id": 3,
-  "name": "testuser1",
-  "email": "hari@gmail.com",
-  "timestamp": "2025-09-02T01:40:52.772510518Z"
+    "id": 3,
+    "name": "testuser1",
+    "email": "hari@gmail.com",
+    "timestamp": "2025-09-02T01:40:52.772510518Z"
 }
 
 2️⃣ Login
@@ -101,16 +103,10 @@ POST http://localhost:8088/login
 
 Request
 {
-  "password": "12345",
-  "mail_id": "hari@gmail.com"
+    "password": "12345",
+    "mail_id": "hari@gmail.com"
 }
-
 Response
 {
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NTY3ODA4ODksIm1haWwtaWQiOiJoYXJpQGdtYWlsLmNvbSIsInVzZXJfaWQiOjEsInVzZXJuYW1lIjoidGVzdHVzZXIifQ.8rNpFdfd3oCNwAjXl2N2wcVmI1YWDNL1FBsVYgWXo0g"
 }
-
-
-📜 License
-
-This project was developed for educational purposes as part of a home assignment.
