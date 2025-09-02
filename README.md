@@ -45,7 +45,7 @@ DBUSER=postgres
 DBPASS=12345
 DBNAME=task_db
 DBHOST=host.docker.internal
-# DBHOST=localhost   # Use this if running locally without Docker
+-- DBHOST=localhost   # Use this if running locally without Docker
 DBPORT=5432
 JWTSECRETKEY=secretkey1234567
 
